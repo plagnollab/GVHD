@@ -1,5 +1,5 @@
-TM008_no_outlier = read.csv("/cluster/project8/vyp/Winship_GVHD/claire/data_files/mhc1_ko/TM008wt_vs_TM008ko_no_outlier.csv", header = TRUE)
-TM006_no_outlier = read.csv("/cluster/project8/vyp/Winship_GVHD/claire/data_files/mhc1_ko/TM006wt_vs_TM006ko_no_outlier.csv", header = TRUE)
+TM008_no_outlier = read.csv("array_analysis/MHC1_KO/results/TM008wt_vs_TM008ko.csv", header = TRUE)
+TM006_no_outlier = read.csv("array_analysis/MHC1_KO/results/TM006wt_vs_TM006ko.csv", header = TRUE)
 
 significant_TM006 = subset(TM006_no_outlier, as.vector(TM006_no_outlier$P.Value) < 0.05)
 significant_TM008 = subset(TM008_no_outlier, as.vector(TM008_no_outlier$P.Value) < 0.05)
@@ -16,10 +16,10 @@ write.csv(x= non_significant_TM008, file = paste('array_analysis/MHC1_KO/results
 
 pdf("array_analysis/MHC1_KO/figs/D7_histogram.pdf")
 
-hist(TM008_no_outlier$P.Value, breaks=seq(0, 1, by=0.02), main = "Histogram of D7 (TM008) MHC1-KO vs WT p-values", xlab = "p-value" )
+hist(TM008_no_outlier$P.Value, breaks=seq(0, 1, by=0.02), main = "Histogram of D7 (TM008) MHC1-KO vs WT p-values", xlab = "p-value", col = "red")
 dev.off()
 
 pdf("array_analysis/MHC1_KO/figs/D42_histogram.pdf")
-TM006HIST = hist(TM006_no_outlier$P.Value, breaks=seq(0, 1, by=0.02), main = "Histogram of D42 (TM006) MHC1-KO vs WT p-values", xlab = "p-value" )
+TM006HIST = hist(TM006_no_outlier$P.Value, breaks=seq(0, 1, by=0.02), main = "Histogram of D42 (TM006) MHC1-KO vs WT p-values", xlab = "p-value", col = "red" )
 
 dev.off()
