@@ -1,6 +1,5 @@
 library(oligo)
 library(limma)
-##library(affy)
 
 all.files <- list.celfiles('/cluster/project8/vyp/Winship_GVHD/claire/data_files/Teresa_microarray', full.names = TRUE, recursive = TRUE)
 annotations <- read.csv('/cluster/project8/vyp/Winship_GVHD/oldFiles/data_Hannah_Shorrock/MoGene-2_0-st-v1.design-time.20120706.transcript.csv', skip = 9)
@@ -13,11 +12,11 @@ summaries <- rma(affyexpression, target = set.probes)
 pheno.data.main <- pData(summaries)
 
 
-#for (choice in c("TM006wt_vs_TM006ko")){
-for (choice in c("TM008wt_vs_TM008ko", "TM006wt_vs_TM006ko")){
+for (choice in c("TM008wt_vs_TM008ko")){
+#for (choice in c("TM008wt_vs_TM008ko", "TM006wt_vs_TM006ko")){
 
   if (choice== 'TM008wt_vs_TM008ko'){
-    loc.summaries <- summaries[, grepl(pattern = "TM008", row.names(pheno.data.main) )]  ## this is the subsetted file
+    loc.summaries <- summaries[, !grepl(pattern = "TM008_ko4", row.names(pheno.data.main)) & grepl(pattern = "TM008", row.names(pheno.data.main) )]  ## this is the subsetted file, I remove the outlier here
   }
   
   if (choice== 'TM006wt_vs_TM006ko'){
