@@ -5,31 +5,28 @@ library(limma)
 all.files <- list.celfiles('/cluster/project8/vyp/Winship_GVHD/claire/data_files/Teresa_microarray', full.names = TRUE, recursive = TRUE)
 annotations <- read.csv('/cluster/project8/vyp/Winship_GVHD/oldFiles/data_Hannah_Shorrock/MoGene-2_0-st-v1.design-time.20120706.transcript.csv', skip = 9)
 
+set.probes <- 'core'  ##extended, full are other options
+
+affyexpression <- read.celfiles(all.files)
+summaries <- rma(affyexpression, target = set.probes)
+
+pheno.data.main <- pData(summaries)
+
+
 #for (choice in c("TM006wt_vs_TM006ko")){
-for (choice in c("TM008wt_vs_TM008ko")){
+for (choice in c("TM008wt_vs_TM008ko", "TM006wt_vs_TM006ko")){
 
   if (choice== 'TM008wt_vs_TM008ko'){
-    selected.files <- subset(all.files,grepl(pattern = "TM008_wt|TM008_ko",all.files))
-    design <- model.matrix(~factor(c(2,2,1,1,1)))
+    loc.summaries <- summaries[, grepl(pattern = "TM008", row.names(pheno.data.main) )]  ## this is the subsetted file
   }
   
   if (choice== 'TM006wt_vs_TM006ko'){
-    selected.files <- subset(all.files,grepl(pattern = "TM006_wt|TM006_ko",all.files))
-    design <- model.matrix(~factor(c(2,2,2,1,1,1)))
+    loc.summaries <- summaries[, grepl(pattern = "TM006", row.names(pheno.data.main) )]  ## this is the subsetted file
   }
-  
-## need to specify wild type and knock out in each case then run analysis
 
-  set.probes <- 'core'  ##extended, full are other options
+  design <- model.matrix(~factor(ifelse( grepl(pattern = "wt", row.names(pData(loc.summaries))), 1, 2)))
   
-  affyexpression <- read.celfiles(selected.files)
-  summaries <- rma(affyexpression, target = set.probes)
-
-  ##Library - package mogene20stcdf not installed
-  new.expr <- justRMA(filenames = basename(selected.files), celfile.path = "/cluster/project8/vyp/Winship_GVHD/claire/data_files/Teresa_microarray/")
-  print(exprs(summaries)[head(subset(tab.annotated, P.Value == 1)$probeset_id),])
-  
-  fit <- lmFit(summaries,design)
+  fit <- lmFit(loc.summaries,design)
   ebayes <- eBayes(fit)
   lod <- -log10(ebayes[["p.value"]][,2])
   mtstat<- ebayes[["t"]][,2]
