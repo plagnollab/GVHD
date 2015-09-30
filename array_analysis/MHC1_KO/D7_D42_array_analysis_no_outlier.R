@@ -12,8 +12,8 @@ summaries <- rma(affyexpression, target = set.probes)
 pheno.data.main <- pData(summaries)
 
 
-for (choice in c("TM008wt_vs_TM008ko")){
-#for (choice in c("TM008wt_vs_TM008ko", "TM006wt_vs_TM006ko")){
+#for (choice in c("TM008wt_vs_TM008ko")){
+for (choice in c("TM008wt_vs_TM008ko", "TM006wt_vs_TM006ko")){
 
   if (choice== 'TM008wt_vs_TM008ko'){
     loc.summaries <- summaries[, !grepl(pattern = "TM008_ko4", row.names(pheno.data.main)) & grepl(pattern = "TM008", row.names(pheno.data.main) )]  ## this is the subsetted file, I remove the outlier here
@@ -23,10 +23,13 @@ for (choice in c("TM008wt_vs_TM008ko")){
     loc.summaries <- summaries[, grepl(pattern = "TM006", row.names(pheno.data.main) )]  ## this is the subsetted file
   }
 
-  design <- model.matrix(~factor(ifelse( grepl(pattern = "wt", row.names(pData(loc.summaries))), 1, 2)))
+  design1 <- model.matrix(~factor(ifelse( grepl(pattern = "wt", row.names(pData(loc.summaries))), 1, 2)))
+  fit1 <- lmFit(loc.summaries,design1)
   
-  fit <- lmFit(loc.summaries,design)
-  ebayes <- eBayes(fit)
+  ##design0 <- model.matrix(~rep(1, times = nrow(pData(loc.summaries))))[,1]
+  ##fit0 <- lmFit(loc.summaries,design0)
+  
+  ebayes <- eBayes(fit1, proportion=0.55)
   lod <- -log10(ebayes[["p.value"]][,2])
   mtstat<- ebayes[["t"]][,2]
   tab <- topTable(ebayes, coef=2, adjust="fdr", genelist = ebayes$genes, n = nrow(ebayes))
