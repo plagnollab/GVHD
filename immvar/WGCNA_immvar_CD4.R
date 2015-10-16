@@ -110,7 +110,7 @@ MEs = orderMEs(MEs0)
 
 #################### annotation ########################
 
-annot = read.csv(file = "/cluster/project8/vyp/Winship_GVHD/claire/GVHD/immvar/HuGene-1_0-st.csv", header = T);
+annot = read.csv(file = "/cluster/project8/vyp/Winship_GVHD/claire/scripts/immvar/HuGene-1_0-st.csv", header = T);
 dim(annot)
 probes = names(datExpr)
 probes2annot = match(probes, annot$transcript_cluster_id)

@@ -49,7 +49,7 @@ powers = c(c(1:10), seq(from = 12, to=20, by=2))
 # Call the network topology analysis function
 sft = pickSoftThreshold(datExpr, dataIsExpr = TRUE, powerVector = powers, verbose = 5)
 
-png(file = "/cluster/project8/vyp/Winship_GVHD/claire/results/immvar/plots/scale_free_topology_fit.png", width = 12, height = 9);
+pdf(file = "/cluster/project8/vyp/Winship_GVHD/claire/GVHD/immvar/results/plots/scale_free_topology_fit.png", width = 12, height = 9);
 par(mfrow = c(1,2));
 cex1 = 0.9;
 # Scale-free topology fit index as a function of the soft-thresholding power
@@ -69,7 +69,7 @@ cex1 = 0.9;
 
 ##################### check scale free topology ################################
 k=softConnectivity(datE=datExpr,power=3)
-pdf(file = "/cluster/project8/vyp/Winship_GVHD/claire/results/immvar/plots/check_scale_free_topology.pdf", width = 12, height = 9);
+pdf(file = "/cluster/project8/vyp/Winship_GVHD/claire/GVHD/immvar/results/plots/check_scale_free_topology.pdf", width = 12, height = 9);
 sizeGrWindow(10,5)
 par(mfrow=c(1,2))
 hist(k)
@@ -86,7 +86,7 @@ net = blockwiseModules(datExpr, power = 3,
 
 table(net$colors)
 
-pdf(file = "/cluster/project8/vyp/Winship_GVHD/claire/results/immvar/plots/cluster_dendogram.pdf", width = 12, height = 9);
+pdf(file = "/cluster/project8/vyp/Winship_GVHD/claire/GVHD/immvar/results/plots/cluster_dendogram.pdf", width = 12, height = 9);
 # open a graphics window
 sizeGrWindow(12, 9)
 # Convert labels to colors for plotting
@@ -110,7 +110,7 @@ MEs = orderMEs(MEs0)
 
 #################### annotation ########################
 
-annot = read.csv(file = "/cluster/project8/vyp/Winship_GVHD/claire/scripts/immvar/HuGene-1_0-st.csv", header = T);
+annot = read.csv(file = "/cluster/project8/vyp/Winship_GVHD/claire/GVHD/immvar/HuGene-1_0-st.csv", header = T);
 dim(annot)
 probes = names(datExpr)
 probes2annot = match(probes, annot$transcript_cluster_id)
@@ -122,7 +122,7 @@ gene.list <- unique(strsplit(paste(gene.list, collapse = " // "), split = " // "
 gene.list <- gsub(gene.list, pattern = "ENST.+", gene.list, replacement = "")
 x = select(org.Hs.eg.db, gene.list, c("ENTREZID"), "ALIAS")
 allLLIDs = x$ENTREZID[probes2annot];
-print(allLLIDs)
+#print(allLLIDs)
 
 GOenr = GOenrichmentAnalysis(moduleColors, allLLIDs, organism = "human", nBestP = 10);
 tab = GOenr$bestPTerms[[4]]$enrichment
@@ -134,4 +134,4 @@ geneInfo0 = data.frame(transcript_cluster_id = probes,
 # Order modules by their significance for weight
 modOrder = order(-abs(cor(MEs, weight, use = "p")));
 
-write.csv(geneInfo, file = "/cluster/project8/vyp/Winship_GVHD/claire/results/immvar/geneInfo.csv")
+write.csv(geneInfo, file = "/cluster/project8/vyp/Winship_GVHD/claire/GVHD/immvar/results/geneInfo.csv")
