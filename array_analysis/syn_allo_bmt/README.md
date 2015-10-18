@@ -2,6 +2,8 @@
 
 Objective: Evaluate the differences in gene expression of Langerhans cells in the setting of an allogeneic BMT or a syngeneic BMT.
 
+Expression arrays performed on flow sorted Langerhans cells.
+
 Groups:
 
 + Allogeneic BMT recipients (bone marrow B6 female donor & T cells from MataHari female donor  B6 male recipient)
