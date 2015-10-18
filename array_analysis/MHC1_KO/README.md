@@ -5,6 +5,8 @@
 
 In a polyclonal model, evaluate the differences in gene expression of effector T cells found in the lymphoid organs or in the peripheral tissues.
 
+Histogram of P-values show an increase of low Ps, suggesting that a signal is captured by this experiment.
+
 
 ## TM008wt_vs_TM008ko
 

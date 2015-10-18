@@ -6,9 +6,10 @@ Expression arrays performed on flow sorted Langerhans cells.
 
 Groups:
 
-+ Allogeneic BMT recipients (bone marrow B6 female donor & T cells from MataHari female donor  B6 male recipient)
++ Allogeneic BMT recipients (bone marrow B6 female donor & T cells from MataHari female donor  B6 male recipient, 3 arrays)
 
-+  Syngeneic BMT recipients (bone marrow & T cells from B6 female donor  B6 female recipient)
++  Syngeneic BMT recipients (bone marrow & T cells from B6 female donor  B6 female recipient, 3 arrays)
 
-+  Untreated recipient (B6 male)
++  Untreated recipient (B6 male, 3 arrays)
 
+None of these groups seem to show any excess of P-values.
