@@ -49,7 +49,7 @@ for (choice in c("TM008wt_vs_TM008ko", "TM006wt_vs_TM006ko")){
   ##print(tab.annotated)
   significant <- subset(tab.annotated,P.Value < 5.0e-03)
                                         # write.csv(x= tab, file = "Teresa_test1.csv",sep = "\n")
-  write.csv(x= tab.annotated, file = paste('array_analysis/MHC1_KO/results/', choice,'.csv',sep =""))
+  write.csv(x= tab.annotated, file = paste('/cluster/project8/vyp/Winship_GVHD/claire/GVHD/array_analysis/MHC1_KO/results/', choice,'.csv',sep =""))
   esetSel <- as.matrix(significant[1:100,]) 
 
   #pdf("array_analysis/MHC1_KO/figs/heatmap_DE.pdf",width = 9, height = 5)
