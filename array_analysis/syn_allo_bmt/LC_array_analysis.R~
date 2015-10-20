@@ -23,6 +23,14 @@ for (choice in c("BMT_male_vs_BMT_female", "BMT_female_vs_naive_male", "BMT_male
   
   affyexpression <- read.celfiles(selected.files)
   summaries <- rma(affyexpression, target = set.probes)
+  exprs <- exprs(summaries)
+     pca <- prcomp(t(exprs));
+     summary(pca);
+
+    pdf(paste("/cluster/project8/vyp/Winship_GVHD/claire/GVHD/array_analysis/syn_allo_bmt/figs/pca_plot_", choice, ".pdf", sep = ""))
+    plot(pca, main = paste(choice, " pca plot", sep= ""))
+    dev.off()
+  
   design <- model.matrix(~factor(c(1,1,1,2,2,2)))
   fit <- lmFit(summaries,design)
   ebayes <- eBayes(fit)

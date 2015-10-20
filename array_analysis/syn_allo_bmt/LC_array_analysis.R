@@ -27,7 +27,7 @@ for (choice in c("BMT_male_vs_BMT_female", "BMT_female_vs_naive_male", "BMT_male
      pca <- prcomp(t(exprs));
      summary(pca);
 
-    pdf(paste("/cluster/project8/vyp/Winship_GVHD/claire/GVHD/array_analysis/syn_allo_bmt/figs/pca_plot_", choice, ".pdf", sep = ""))
+    pdf(paste("array_analysis/syn_allo_bmt/figs/pca_plot_", choice, ".pdf", sep = ""))
     plot(pca, main = paste(choice, " pca plot", sep= ""))
     dev.off()
   
