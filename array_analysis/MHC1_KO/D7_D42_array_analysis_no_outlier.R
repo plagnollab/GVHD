@@ -1,5 +1,6 @@
 library(oligo)
 library(limma)
+library(lattice)
 
 all.files <- list.celfiles('/cluster/project8/vyp/Winship_GVHD/claire/data_files/Teresa_microarray', full.names = TRUE, recursive = TRUE)
 annotations <- read.csv('/cluster/project8/vyp/Winship_GVHD/oldFiles/data_Hannah_Shorrock/MoGene-2_0-st-v1.design-time.20120706.transcript.csv', skip = 9)
@@ -28,7 +29,13 @@ for (choice in c("TM008wt_vs_TM008ko", "TM006wt_vs_TM006ko")){
   
   ##design0 <- model.matrix(~rep(1, times = nrow(pData(loc.summaries))))[,1]
   ##fit0 <- lmFit(loc.summaries,design0)
-  
+   exprs <- exprs(loc.summaries)
+   pca <- prcomp(t(exprs));
+   summary(pca);
+
+  pdf(paste("/cluster/project8/vyp/Winship_GVHD/claire/GVHD/array_analysis/MHC1_KO/figs/pca_plot_", choice, ".pdf", sep = ""))
+  plot(pca, main = paste(choice, " pca plot", sep= ""))
+  dev.off()
   ebayes <- eBayes(fit1, proportion=0.55)
   lod <- -log10(ebayes[["p.value"]][,2])
   mtstat<- ebayes[["t"]][,2]
@@ -38,11 +45,6 @@ for (choice in c("TM008wt_vs_TM008ko", "TM006wt_vs_TM006ko")){
   tab$new.col <- IDS
   ##print(IDS)
   colnames(tab)[7] <- c('probeset_id')
-                                        #  probes <- rownames(tab)
-                                        #  print(probes)
-                                        #  print(p.adj)
-                                        #  test <- IDS[p.adj<0.05]
-                                        #  print(test)
   tab.annotated <- merge(tab, annotations, by = 'probeset_id', all.x = TRUE)
   tab.annotated <- tab.annotated[ order(tab.annotated$P.Value, decreasing = FALSE), ]
   tab.annotated <- subset(tab.annotated, seqname != '---')

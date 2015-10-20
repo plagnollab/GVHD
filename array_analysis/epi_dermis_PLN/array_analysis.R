@@ -1,5 +1,4 @@
 #As a first step, a good comparison would be  (1) epidermis versus epidermis DT (2)  dermis versus dermis DT and (3) peripheral LN versus peripheral LN +DT.
-
 ##1- look at different groupings
 ##2- different probe sets
 ##3- add batch as covariate
@@ -23,7 +22,7 @@ set.probes <- 'core'  ##extended, full are other options
 
 
 
-for (choice in c('dermis_vs_dermisDT', 'PLN_vs_PLNDT')) {
+for (choice in c('dermis_vs_dermisDT', "epidermis_vs_epidermisDT", "PLN_vs_PLNDT")) {
   
   if (choice == 'epidermis_vs_epidermisDT') {
     selected.files <- sort(subset(all.files, grepl(pattern = 'D9|A9', all.files)))
@@ -47,7 +46,7 @@ for (choice in c('dermis_vs_dermisDT', 'PLN_vs_PLNDT')) {
   ebayes <- eBayes(fit)
   lod <- -log10(ebayes[["p.value"]][,2])
   mtstat<- ebayes[["t"]][,2]
-  tab <- topTable(ebayes, coef=2, adjust="fdr", n = nrow(ebayes$genes))
+  tab <- topTable(ebayes, coef=2, adjust="fdr", n = nrow(ebayes))
   names(tab)[1] <- 'probeset_id'
   
   tab.annotated <- merge(tab, annotations, by = 'probeset_id', all.x = TRUE)
