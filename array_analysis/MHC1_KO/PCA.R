@@ -1,3 +1,4 @@
+
 library(oligo)
 library(limma)
 library(lattice)
@@ -34,10 +35,13 @@ dev.off()
 library(ggplot2)
 my.frame <- as.data.frame(my.pca[, 1:4])  ##ggplot wants data frame
 my.frame$array <- gsub(row.names(my.pca), pattern = ".CEL", replacement = "")
+my.frame$group = c("D42_ko", "D42_ko", "D42_ko", "D42_wt", "D42_wt", "D42_wt", "D7_ko", "D7_ko", "D7_ko", "D7_wt", "D7_wt", "D7_wt")
 
 g <- ggplot(data = my.frame, aes(x = PC1, y = PC2)) + geom_point()
-g <- g + geom_text(aes(x = PC1, y = PC2, label = array))
-ggsave(g, file = "/cluster/project8/vyp/Winship_GVHD/claire/results/mhc1_ko/figs/PCA_prettier.pdf")
+g <- g + geom_text(aes(x = PC1, y = PC2, label = array, size = 0.03))
+g <- g + geom_point(aes(colour = factor(my.frame$group)))
+g <- g + labs(aes(colour='group'))
+ggsave(g, width = 10, file = "/cluster/project8/vyp/Winship_GVHD/claire/results/mhc1_ko/figs/PCA_prettier.pdf")
 
 
 ### now we now that TM008_ko4 is an outlier, it makes the graph less interesting. Let us remove and redo
@@ -46,8 +50,11 @@ summaries.no.outlier <- summaries[, row.names(pData(summaries)) != "TM008_ko4.CE
 my.pca <- prcomp(t(exprs(summaries.no.outlier)), retx = TRUE)$x  ## and we redo a PCA
 my.frame <- as.data.frame(my.pca[, 1:4])  ##ggplot wants data frame
 my.frame$array <- gsub(row.names(my.pca), pattern = ".CEL", replacement = "")
+my.frame$group = c("D42_ko", "D42_ko", "D42_ko", "D42_wt", "D42_wt", "D42_wt", "D7_ko", "D7_ko","D7_wt", "D7_wt", "D7_wt")
 
 g <- ggplot(data = my.frame, ggplot2::aes(x = PC1, y = PC2)) + ggplot2::geom_point()
 g <- g + ggplot2::geom_text(ggplot2::aes(x = PC1, y = PC2, label = array, vjust = -1, size = 2)) + ggplot2::scale_size(guide = "none")
 g <- g + ggplot2::ggtitle("TM008_ko4.CEL removed")
+g <- g + ggplot2::geom_point(aes(colour = factor(my.frame$group)))
+g <- g + ggplot2::labs(aes(colour='group'))
 ggsave(g, width = 10, height = 5, file = "/cluster/project8/vyp/Winship_GVHD/claire/results/mhc1_ko/figs/PCA_prettier_outlier_removed.pdf")
