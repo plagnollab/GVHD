@@ -29,13 +29,7 @@ for (choice in c("TM008wt_vs_TM008ko", "TM006wt_vs_TM006ko")){
   
   ##design0 <- model.matrix(~rep(1, times = nrow(pData(loc.summaries))))[,1]
   ##fit0 <- lmFit(loc.summaries,design0)
-   exprs <- exprs(loc.summaries)
-   pca <- prcomp(t(exprs));
-   summary(pca);
 
-  pdf(paste("/cluster/project8/vyp/Winship_GVHD/claire/GVHD/array_analysis/MHC1_KO/figs/pca_plot_", choice, ".pdf", sep = ""))
-  plot(pca, main = paste(choice, " pca plot", sep= ""))
-  dev.off()
   ebayes <- eBayes(fit1, proportion=0.55)
   lod <- -log10(ebayes[["p.value"]][,2])
   mtstat<- ebayes[["t"]][,2]

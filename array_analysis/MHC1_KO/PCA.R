@@ -1,7 +1,6 @@
 library(oligo)
 library(limma)
 library(lattice)
-library(smida)
 
 all.files <- list.celfiles('/cluster/project8/vyp/Winship_GVHD/claire/data_files/Teresa_microarray', full.names = TRUE, recursive = TRUE)
 
@@ -9,11 +8,11 @@ set.probes <- 'core'  ##extended, full are other options
 affyexpression <- read.celfiles(all.files)
 summaries <- rma(affyexpression, target = set.probes)
 
-save(list = "summaries", file = "array_analysis/MHC1_KO/results/summary_core.RData")
+save(list = "summaries", file = "/cluster/project8/vyp/Winship_GVHD/claire/results/mhc1_ko/results/summary_core.RData")
 
 my.pca <- prcomp(t(exprs(summaries)), retx = TRUE)$x
 
-pdf("array_analysis/MHC1_KO/figs/PCA.pdf")
+pdf("/cluster/project8/vyp/Winship_GVHD/claire/results/mhc1_ko/figs/PCA.pdf")
 plot(x = my.pca[, 1], ##first PC
      y = my.pca[, 2])  ## second PC
 
@@ -38,7 +37,7 @@ my.frame$array <- gsub(row.names(my.pca), pattern = ".CEL", replacement = "")
 
 g <- ggplot(data = my.frame, aes(x = PC1, y = PC2)) + geom_point()
 g <- g + geom_text(aes(x = PC1, y = PC2, label = array))
-ggsave(g, file = "array_analysis/MHC1_KO/figs/PCA_prettier.pdf")
+ggsave(g, file = "/cluster/project8/vyp/Winship_GVHD/claire/results/mhc1_ko/figs/PCA_prettier.pdf")
 
 
 ### now we now that TM008_ko4 is an outlier, it makes the graph less interesting. Let us remove and redo
@@ -51,4 +50,4 @@ my.frame$array <- gsub(row.names(my.pca), pattern = ".CEL", replacement = "")
 g <- ggplot(data = my.frame, ggplot2::aes(x = PC1, y = PC2)) + ggplot2::geom_point()
 g <- g + ggplot2::geom_text(ggplot2::aes(x = PC1, y = PC2, label = array, vjust = -1, size = 2)) + ggplot2::scale_size(guide = "none")
 g <- g + ggplot2::ggtitle("TM008_ko4.CEL removed")
-ggsave(g, file = "array_analysis/MHC1_KO/figs/PCA_prettier_outlier_removed.pdf")
+ggsave(g, width = 10, height = 5, file = "/cluster/project8/vyp/Winship_GVHD/claire/results/mhc1_ko/figs/PCA_prettier_outlier_removed.pdf")
