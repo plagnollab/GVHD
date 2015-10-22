@@ -53,7 +53,7 @@ for (choice in c('dermis_vs_dermisDT', "epidermis_vs_epidermisDT", "PLN_vs_PLNDT
   tab.annotated <- tab.annotated[ order(tab.annotated$P.Value, decreasing = FALSE), ]
   tab.annotated <- subset(tab.annotated, seqname != '---')
   
-  write.csv(x = tab.annotated, file = paste("/cluster/project8/vyp/Winship_GVHD/claire/GVHD/array_analysis/epi_dermis_PLN/results/", choice, '.csv', sep = ''))
+  write.csv(x = tab.annotated, file = paste("array_analysis/Hannah_first_experiment/results/", choice, '.csv', sep = ''))
 }
 
 
