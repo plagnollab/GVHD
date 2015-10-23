@@ -7,7 +7,7 @@ significant = subset(infile, as.vector(infile$P.Value) < 0.05)
 non_significant = subset(infile, as.vector(infile$P.Value) > 0.05)
 
 write.csv(x= significant, file = paste('/cluster/project8/vyp/Winship_GVHD/claire/results/syn_allo_bmt/results/DE_', choice, '.csv',sep =""))
-write.csv(x= non_significant, file = paste('/cluster/project8/vyp/Winship_GVHD/claire/results/syn_allo_bmt/resultsnon_DE_', choice, '.csv',sep =""))
+write.csv(x= non_significant, file = paste('/cluster/project8/vyp/Winship_GVHD/claire/results/syn_allo_bmt/results/non_DE_', choice, '.csv',sep =""))
 
 ########### plot of p values ########
 
