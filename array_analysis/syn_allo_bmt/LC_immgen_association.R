@@ -25,11 +25,11 @@ my.table <- subset(my.table, my.table$gene.name %in% c(DE.gene.list, nonDE.gene.
 my.table$DE <- my.table$gene.name %in% DE.gene.list
 
 modules <- read.table("/cluster/project8/vyp/Winship_GVHD/claire/data_files/gene_assignment.csv", sep = ",", header = TRUE, stringsAsFactors = FALSE)
-all.modules <- unique(modules$Fine.module)
+all.modules <- unique(modules$Coarse.module)
 table.results <- data.frame(module = all.modules, pvalue = NA)
 
 for (i in 1:nrow(table.results)) {
-  genes.in.module <- tolower(subset(modules, Fine.module == table.results$module[ i ], Gene, drop = TRUE))
+  genes.in.module <- tolower(subset(modules, Coarse.module == table.results$module[ i ], Gene, drop = TRUE))
   #print(genes.in.module)
   my.table$in.module <- my.table$gene.name %in% genes.in.module
   #print(my.table$DE)
@@ -47,12 +47,12 @@ for (i in 1:nrow(table.results)) {
 
 test1 = cbind(table.results$module, table.results$neg_log_pvalue)
 
-write.table(table.results, file = paste("/cluster/project8/vyp/Winship_GVHD/claire/results/syn_allo_bmt/results/", choice,"_ImmGen_fine__module_association_Fishers_exact_test_Pvalues.txt", sep = ""), sep = "\t")
+write.table(table.results, file = paste("/cluster/project8/vyp/Winship_GVHD/claire/results/syn_allo_bmt/results/", choice,"_ImmGen_coarse__module_association_Fishers_exact_test_Pvalues.txt", sep = ""), sep = "\t")
 colnames(modules)[1] <- "gene.name"
 modules$gene.name <- tolower(modules$gene.name)
 final.table = merge(my.table, modules, by = "gene.name", all.x = TRUE)
 final.table$module = NULL
-write.table(final.table, file = paste("/cluster/project8/vyp/Winship_GVHD/claire/results/syn_allo_bmt/results/", choice, "_final_table_fine.txt", sep = ""), sep = "\t")
+write.table(final.table, file = paste("/cluster/project8/vyp/Winship_GVHD/claire/results/syn_allo_bmt/results/", choice, "_final_table_coarse.txt", sep = ""), sep = "\t")
 
 
 ########## plot #############
@@ -60,13 +60,13 @@ write.table(final.table, file = paste("/cluster/project8/vyp/Winship_GVHD/claire
 
 
 xmin = 0
-xmax = 334
+xmax = 82
 ymin = 0
 ymax = 18
 
-pdf(paste("/cluster/project8/vyp/Winship_GVHD/claire/results/syn_allo_bmt/figs/", choice, "_fine_module_association_graph.pdf", sep = ""))
-plot(test1, type = "n", main = paste("Fisher's Exact Test p-values for association of the ", choice, " differential gene \n expression dataset with the ImmGen Fine modules", sep = ""), xlab = "Fine module number", ylab = "-log10(p-value)", xlim = c(xmin, xmax), ylim = c(ymin, ymax), xaxs = "i", yaxs = "i")
-axis(side=1, at=seq(0, 334, by = 10))
+pdf(paste("/cluster/project8/vyp/Winship_GVHD/claire/results/syn_allo_bmt/figs/", choice, "_coarse_module_association_graph.pdf", sep = ""))
+plot(test1, type = "n", main = paste("Fisher's Exact Test p-values for association \n of the ", choice, " differential gene expression \n dataset with the ImmGen Coarse modules", sep = ""), xlab = "Coarse module number", ylab = "-log10(p-value)", xlim = c(xmin, xmax), ylim = c(ymin, ymax), xaxs = "i", yaxs = "i")
+axis(side=1, at=seq(0, 82, by = 2))
 axis(side=2, at=seq(0, 18, by = 2))
 lines(test1, type = "h", col = "blue")
 dev.off()
