@@ -1,4 +1,4 @@
-for (choice in c("BMT_male_vs_BMT_female", "BMT_female_vs_naive_male", "BMT_male_vs_naive_male")){
+for (choice in c("BMT_male_vs_BMT_female")){#, "BMT_female_vs_naive_male", "BMT_male_vs_naive_male")){
 
 data <- read.table("/cluster/project8/vyp/Winship_GVHD/claire/data_files/biomart_annotations_mmusculus_gene_ensembl.tab", sep = "\t", comment.char = "", header = TRUE)
 
@@ -38,9 +38,9 @@ for (i in 1:nrow(table.results)) {
   my.test <- fisher.test(table(my.table$DE, my.table$in.module))
   #print(my.test)
   message("Module ",table.results$module[ i ] , " has a P-value of ", my.test$p.value) 
- # if (table.results$module[i] == 52){
-  #  print(table1)
-  # }
+  if (table.results$module[i] == 34){
+    print(table1)
+   }
   table.results$pvalue[ i ] <- my.test$p.value
   table.results$neg_log_pvalue[i] <- -log10(my.test$p.value)
 }
