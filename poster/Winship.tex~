@@ -56,6 +56,7 @@
         \begin{block}{The ImmGen project}
           \begin{itemize}
           \item The primary aim of ImmGen project is to be comprehensive definition of gene expression and regulatory networks in cells of the mouse immune system
+          \item To date all data has been collected using the Affymetrix microarray platform
           \item Genes are grouped into modules according to similarities in expression profiles 
           \item Immgen coarse modules consist of groups of genes with broadly similar expression profiles while fine modules represent more defined collections of genes with a high degree of similarity in the expression patterns
 	  \item By comparing differentially expressed gene sets to ImmGen, it is possible to identify expression level changes of potentially biologically relevant pathways within the data
@@ -86,21 +87,21 @@
 	  \begin{minipage}{0.45\textwidth}
             \includegraphics[width=13cm]{/cluster/project8/vyp/Winship_GVHD/claire/results/mhc1_ko/figs/D42_histogram.pdf}
 	    \end{minipage}
-{\small	  \begin{itemize}
+	  \begin{itemize}
 	    \item Histogram of the D7 P-Values does not include outlier sample
 	    \item A dip in the plot at low P-Values is visible, this is inconsistent with a uniform distribution of P-Values under the null hypothesis
 	    \item The reason for this unusual distribution is still not clear - the RMA package used in this analysis may be a factor but this is currently under investigation 
-	\end{itemize}} 
+	\end{itemize} 
           \begin{minipage}{0.45\textwidth}
             \includegraphics[width=13cm]{/cluster/project8/vyp/Winship_GVHD/claire/results/mhc1_ko/figs/D42WT_VS_D42KO_coarse_module_association_graph.pdf}
           \end{minipage}
           \begin{minipage}{0.45\textwidth}
             \includegraphics[width=13cm]{/cluster/project8/vyp/Winship_GVHD/claire/results/mhc1_ko/figs/D42WT_VS_D42KO_fine_module_association_graph.pdf}
           \end{minipage}
-{\small          \begin{itemize}
+          \begin{itemize}
             \item Above graphs show the relative associations of the D42 data set with the immgen database, the D7 plots show no significant associations and so are not included here 
             \item Significant associations seen for Coarse module 3 and Fine module 332 
-              \end{itemize}}
+              \end{itemize}
            %   \begin{minipage}
  	{\scriptsize    \begin{tabular}{ |c|c|c| } 
 	    \hline
@@ -137,6 +138,11 @@
 		Dhcr7 	& -0.4962145227	& 0.0184435115 \\
 		Hspe1 	& -0.3740957295	& 0.0187365954 \\
 		Incenp 	& -0.78546281	& 0.0207810279 \\
+		Gm16494 & -0.7331577429	& 0.0268418916 \\
+		Capg 	& -0.6569784888	& 0.0275055833 \\
+		Nme2 	& -0.6564641557	& 0.0314931234 \\
+		Hmgb3 	& 0.4072646485	& 0.0386200399 \\
+		Ttll4 	& 0.3641635611	& 0.0396059507 \\
 	      \hline
 	    \end{tabular} }
 %	\end{minipage}
@@ -199,6 +205,9 @@ Cep55 &	1.6438332146 &	0.0001895853 \\ %   % Plays a role in mitotic exit and cy
 Ccnb2 &	1.8526622049 &	0.0002459554 \\ %Cyclin B2 is a member of the cyclin family, specifically the B-type cyclins. The B-type cyclins, B1 and B2, associate with p34cdc2 and are essential components of the cell cycle regulatory machinery. B1 and B2 differ in their subcellular localization. Cyclin B1 co-localizes with microtubules, whereas cyclin B2 is primarily associated with the Golgi region. Cyclin B2 also binds to transforming growth factor beta RII and thus cyclin B2/cdc2 may play a key role in transforming growth factor beta-mediated cell cycle control.
 Cenpi &	-0.464447851 &	0.0191009403 \\
 Spc25 &	0.3327727456 &	0.0383620894 \\
+Kif15 &	0.347483576  &	0.0375418974 \\
+Ttk  &	0.3675036477 &	0.0384922001 \\
+Stil &	0.4273092153 &	0.0347705485 \\
 
 	      \hline
 	    \end{tabular} }
