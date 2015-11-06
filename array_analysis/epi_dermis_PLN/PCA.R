@@ -39,7 +39,7 @@ my.frame$group = c("epidermisDT", "epidermisDT", "epidermisDT","epidermis", "epi
 
 g <- ggplot(data = my.frame, aes(x = PC1, y = PC2)) + geom_point()
 g <- g + ggplot2::geom_text(ggplot2::aes(x = PC1, y = PC2, label = array, vjust = -1, size = 2)) + ggplot2::scale_size(guide = "none")
-g <- g + geom_point(aes(colour = factor(my.frame$group)))
+g <- g + geom_point(aes(colour = factor(my.frame$group)), size = 5)
 g <- g + labs(colour='group')
 ggsave(g, width = 10, file = "/cluster/project8/vyp/Winship_GVHD/claire/results/epi_dermis_PLN/figs/PCA_prettier.pdf")
 

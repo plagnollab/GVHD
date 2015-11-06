@@ -39,7 +39,7 @@ my.frame$group = c("BMT_male", "BMT_male", "BMT_male", "BMT_female", "BMT_female
 g <- ggplot(data = my.frame, aes(x = PC1, y = PC2)) + geom_point()
 g <- g + ggplot2::geom_text(ggplot2::aes(x = PC1, y = PC2, label = array, vjust = -1, size = 2)) + ggplot2::scale_size(guide = "none")
 #g <- g + geom_text(size = 0.3)
-g <- g + geom_point(aes(colour = factor(my.frame$group)))
+g <- g + geom_point(aes(colour = factor(my.frame$group)), size = 5)
 g <- g + labs(colour='group')
 ggsave(g, width = 10, file = "/cluster/project8/vyp/Winship_GVHD/claire/results/syn_allo_bmt/figs/PCA_prettier.pdf")
 
