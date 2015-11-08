@@ -4,7 +4,7 @@
 
 
 %\title[GVHD]{Quantifying the importance of target organ specific interactions in the aetiology of GVHD}
-\title[GVHD]{Quantifying the importance of target organ interactions in GVHD}
+\title[GVHD]{Quantifying the importance of target organ interactions in GvHD}
 \author[a]{Claire Winship, P. Santos E Sousa, S. Cire, C. Bennett, R. Chakraverty, V. Plagnol}
 %\institute[ugi]{UCL Genetics Institute}
 %\date{\today}
@@ -33,32 +33,25 @@
 \boldmath
 \usepackage[english]{babel}
 \usepackage[latin1]{inputenc}
-%\usepackage{caption}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-\graphicspath{{figures/}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
 \begin{document}
 
 \begin{frame}{} 
 
-%\begin{beamercolorbox}{}
-%\maketitle
-%\end{beamercolorbox}
 
-%\vfill
 \begin{columns}[t]
   \begin{column}{.26\linewidth}
     \begin{block}{Graft versus host disease}
-{\small  \begin{itemize}
+\begin{itemize}
       \item Following BMT, donor immune cells may attack normal host tissue resulting in acute graft vs host disease (GvHD)
   \item Tissue damage by cytotoxic T cells leads to recruitment of other effector cells - increases tissue injury and self perpetuates GvHD
       \item GvHD target tissues include: skin, liver and GI tract
   \item Use of HLA-mismatched non-related donors a major risk factor
       \item Mice primary model animal for pre-clinical studies
-      \end{itemize}} 
+      \end{itemize}
     \end{block}
-
+\vspace{3cm}
     \begin{block}{The ImmGen project}
 \begin{minipage}{0.45\textwidth}
  {\small     \begin{itemize}
@@ -80,10 +73,17 @@
  %     \item Fisher's exact test facilitates the comparison of differentially expressed gene lists with ImmGen
 %\end{itemize}
     \end{block}
-
+\vspace{3cm}
 \begin{block}{Experimental overview}
-  \includegraphics[width = 24cm]{/cluster/project8/vyp/Winship_GVHD/claire/results/experimental_overview.png}
+  \begin{center}
+  \includegraphics[width = 20cm]{/cluster/project8/vyp/Winship_GVHD/vincent/GVHD/poster/figs/GVHD_flowchart.png}
+  \end{center}
 \end{block}
+\begin{itemize}
+\item All datasets use gene expression for characterisation of T-cells, currently microarrays but transition to RNA-Seq in process.
+\item Datasets marked in red are generated and presented in this poster.
+\item Experimental work is ongoing for the other two datasets.
+\end{itemize}
   \end{column}
 
 
@@ -94,96 +94,99 @@
   {\bf Objective:} In a monoclonal model, evaluate the effect of depleting Langerhans cells on the gene expression of effector T cells found in the lymph nodes and in the skin.
 
 
-%  \begin{minipage}{20cm}
+\begin{center}
    \includegraphics[width=25cm]{/cluster/project8/vyp/Winship_GVHD/vincent/GVHD/poster/figs/mataHari_DT.jpg}
- %       \end{minipage}
-  %\begin{minipage}{20cm}
-    {\small
+\end{center}
 \begin{itemize}
 \item MataHari T cells: transgenic CD8 T cells that recognise a single ubiquitously-expressed male antigen (UTY peptide)
 \item Tissues harvested at day +7 post BMT, MataHari T cells sorted and total RNA purified using Affymetrix GeneChip
 \end{itemize}
-}
-        %\end{minipage}
-\end{block}
-
+    \end{block}
+    \vspace{3cm}
+    
     \begin{block}{Overview of results}
-
-
-{\small	\begin{itemize} % NOT SURE THIS IS NEEDED IF MODEL DIAGRAM IS INCLUDED
-\item Langerhans cells (LCs) are the predominant APCs in the skin and are radio-resistant  
-\item LCs have been shown to be sufficient for GVHD progression although this theory is controversial  
-\end{itemize}}
-
-\hfill
-
-\begin{minipage}{0.6\textwidth}
-       \includegraphics[width=17cm]{/cluster/project8/vyp/Winship_GVHD/claire/results/epi_dermis_PLN/figs/PCA_prettier.pdf}
-      \end{minipage}
-\begin{minipage}{0.3\textwidth}
-{\small
-      \begin{itemize}
-      \item PCA plot shows tight cluster of DT treated samples - excludes epidermisDT
-      \item Two samples (one dermis and one PLN) potential outliers but not extreme enough to be removed 
+    
+    
+    \begin{itemize} % NOT SURE THIS IS NEEDED IF MODEL DIAGRAM IS INCLUDED
+    \item Langerhans cells (LCs) are the predominant APCs in the skin and are radio-resistant  
+    \item LCs have been shown to be sufficient for GvHD progression although this theory is controversial  
+    \end{itemize}
+      
+    \hfill
+    
+    \begin{minipage}{0.6\textwidth}
+      \includegraphics[width=17cm]{/cluster/project8/vyp/Winship_GVHD/claire/results/epi_dermis_PLN/figs/PCA_prettier.pdf}
+    \end{minipage}
+    \begin{minipage}{0.3\textwidth}
+      {\small
+	\begin{itemize}
+	\item PCA plot shows tight cluster of DT treated samples - excludes epidermisDT
+	\item Two samples (one dermis and one PLN) potential outliers but not extreme enough to be removed 
       \end{itemize}}
 \end{minipage}
 \end{block}
+\vspace{3cm}
 
-    \begin{block}{How can we use ImmGen to understand these results?}
-  
+\begin{block}{How can we use ImmGen to understand these results?}  
+\vspace{1cm}
 \begin{minipage}{0.30\textwidth}
-        \includegraphics[width=10cm]{/cluster/project8/vyp/Winship_GVHD/claire/results/epi_dermis_PLN/figs/epidermis_vs_epidermisDT_histogram.pdf}
-      \end{minipage}
+  \includegraphics[width=10cm]{/cluster/project8/vyp/Winship_GVHD/claire/results/epi_dermis_PLN/figs/epidermis_vs_epidermisDT_histogram.pdf}
+\end{minipage}
 \hfill
-  \begin{minipage}{0.30\textwidth}
+\begin{minipage}{0.30\textwidth}
     \includegraphics[width=10cm]{/cluster/project8/vyp/Winship_GVHD/claire/results/epi_dermis_PLN/figs/epidermis_vs_epidermisDT_coarse_module_association_graph.pdf}
-  \end{minipage}
+\end{minipage}
 \hfill
 \begin{minipage}{0.30\textwidth}
 \includegraphics[width=10cm]{/cluster/project8/vyp/Winship_GVHD/claire/results/epi_dermis_PLN/figs/epidermis_vs_epidermisDT_fine_module_association_graph.pdf}
 \end{minipage}
 \hfill
 %\begin{minipage}{0.45\textwidth}
-{\small	  \begin{itemize}
- \item Histogram of P-values highlights difference between T-cell epidermis expression with or without LCs
-  \item Strong association to coarse module 5 - downregulated with differentiation of immune cells
-  \item Downregulated in epidermisDT sample - absence of LCs causing aberrant T cell expression? 
-\end{itemize}}
-    \end{block}
+\begin{itemize}
+\item Histogram of P-values highlights difference between T-cell epidermis expression with or without LCs.
+\item Significantly up or down regulated genes can be compared to ImmGen modules using a contingency table and Fisher exact tests.
+\item Strong association to coarse module 5 - downregulated with differentiation of immune cells.
+\item Downregulated in epidermisDT sample - absence of LCs causing aberrant T cell expression? 
+\end{itemize}
+\end{block}
 \end{column}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \begin{column}{.36\linewidth}
+\begin{column}{.36\linewidth}
+  
+  
+  \begin{block}{Assessing the behaviour of Langerhans cells in different models}
+    {\bf Objective:} Evaluate the differences in gene expression of Langerhans cells in the setting of an allogeneic BMT or a syngeneic BMT. 
+    
 
-
-    \begin{block}{Assessing the behaviour of Langerhans cells in different models}
-  {\bf Objective:} Evaluate the differences in gene expression of Langerhans cells in the setting of an allogeneic BMT or a syngeneic BMT. 
-
-
-  \begin{minipage}{20cm}
-   \includegraphics[width=19cm]{/cluster/project8/vyp/Winship_GVHD/vincent/GVHD/poster/figs/LangerhansCells.jpg}
-        \end{minipage}
-%  \begin{minipage}{20cm}
-{\small    \begin{itemize}
+    %  \begin{minipage}{20cm}
+    \begin{center}
+      \includegraphics[width=22cm]{/cluster/project8/vyp/Winship_GVHD/vincent/GVHD/poster/figs/LangerhansCells.jpg}
+    \end{center}
+    %        \end{minipage}
+    %  \begin{minipage}{20cm}
+    \begin{itemize}
     \item Allogeneic BMT recipients (bone marrow B6 female donor and T cells from MataHari female donor B6 male recipient)
     \item Syngeneic BMT recipients (bone marrow and T cells from B6 female donor  B6 female recipient)
     \item Untreated recipient (B6 male)
-    \end{itemize}}
- %       \end{minipage}
+    \end{itemize}
+	%       \end{minipage}
 
-  \begin{minipage}{0.6\textwidth}
-   \includegraphics[width=17cm]{/cluster/project8/vyp/Winship_GVHD/claire/results/syn_allo_bmt/figs/PCA_prettier.pdf}
-      \end{minipage}
-  \begin{minipage}{0.3\textwidth}
-{\small             \begin{itemize}
+	\begin{minipage}{0.6\textwidth}
+	  \includegraphics[width=17cm]{/cluster/project8/vyp/Winship_GVHD/claire/results/syn_allo_bmt/figs/PCA_prettier.pdf}
+	\end{minipage}
+	\begin{minipage}{0.3\textwidth}
+	  {\small             \begin{itemize}
     \item No particularly distinct clustering of samples evident
           \end{itemize}}
-  \end{minipage}
-\end{block}
+	\end{minipage}
+  \end{block}
+\vspace{3cm}
 
 \begin{block}{ImmGen matching reveals hidden signals}
 
-  
+  {\bf BMT female vs naive male}
+
       \begin{minipage}{0.30\textwidth}
         \includegraphics[width=10cm]{/cluster/project8/vyp/Winship_GVHD/claire/results/syn_allo_bmt/figs/BMT_female_vs_naive_male_histogram.pdf}
       \end{minipage}
@@ -195,11 +198,14 @@
 \begin{minipage}{0.30\textwidth}
         \includegraphics[width=10cm]{/cluster/project8/vyp/Winship_GVHD/claire/results/syn_allo_bmt/figs/BMT_female_vs_naive_male_fine_module_association_graph.pdf}
       \end{minipage}
-{\small \begin{itemize}
+\begin{itemize}
 \item Increased expression of coarse module 11 (cell cycle) genes in BMT female mouse 
 \item Fine module 56 peak may suggest upregulation of one pathway/several closely related pathways 
-\end{itemize}}
+\end{itemize}
+\vspace{2cm}
 
+{\bf BMT male vs naive male}
+\vfill
 \begin{minipage}{0.30\textwidth}
         \includegraphics[width=10cm]{/cluster/project8/vyp/Winship_GVHD/claire/results/syn_allo_bmt/figs/BMT_male_vs_naive_male_histogram.pdf}
       \end{minipage}
@@ -210,22 +216,22 @@
   \hfill
   \begin{minipage}{0.30\textwidth}
         \includegraphics[width=10cm]{/cluster/project8/vyp/Winship_GVHD/claire/results/syn_allo_bmt/figs/BMT_male_vs_naive_male_fine_module_association_graph.pdf}
-      \end{minipage}
+  \end{minipage}
   \hfill
-{\small \begin{itemize}
-\item Association with coarse module 34 - decrease in antigen processing/presentation in the BMT male
-\item Peak for coarse module 52 - contains interferon response genes  
-\end{itemize}}
-    \end{block}
-
+  \begin{itemize}
+  \item Association with coarse module 34 - decrease in antigen processing/presentation in the BMT male
+  \item Peak for coarse module 52 - contains interferon response genes  
+    \end{itemize}
+\end{block}
+\vspace{3cm}
 
 \begin{block}{Next steps}
-{\small  \begin{itemize}
-        \item Need to identify T cell expression signature within lymph-node
-    \item In vivo T cells rapidly migrate from lymph node - can be prevented using the drug Fingolimod (FTY720)
-      \item Confounding factor: how much is the T cell expression pattern a driving force of GvHD as opposed to T cells behaving differently in peripheral tissues cf. the lymph node
-      \item Key question: what proportion of unique peripheral tissue expression should be considered significant 
-      \end{itemize}}
+\begin{itemize}
+\item Need to identify T cell expression signature within lymph-node.
+\item In vivo T cells rapidly migrate from lymph node - can be prevented using the drug Fingolimod (FTY720).
+\item Confounding factor: are tissue specific interactions really key in GvHD or simply a reaction of T cells to a different signalling environment?
+\item How can we better dissect the T-cell response to characterize the GvHD process?
+\end{itemize}
 \end{block}
 
 \vspace{10cm}
