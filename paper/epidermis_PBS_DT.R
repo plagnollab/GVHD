@@ -1,4 +1,4 @@
-modules <- read.table("support/module_assignment.tab", header = TRUE, stringsAsFactors = FALSE)
+modules <- read.table("paper/support/module_assignment.tab", header = TRUE, stringsAsFactors = FALSE)
 
 
 mod28.genes <- subset(modules, module <- id == "MH_28")[,1]

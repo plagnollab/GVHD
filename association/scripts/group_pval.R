@@ -9,7 +9,7 @@ groupbased.pvalue <- function(pvalues, sign.association, genomewide.prop.positiv
   stat.all.negative <- sum(ifelse (sign.association < 0, gene.chisq, 0))
   final.stat <- max(stat.all.positive, stat.all.negative)
   
-  proba.nb.nonzeros.under.null <- dbinom(size = ngenes, prob = genomewide.prop.positive, x = 1:ngenes )
+  proba.nb.nonzeros.under.null <- 2*dbinom(size = ngenes, prob = genomewide.prop.positive, x = 1:ngenes )
   proba.nb.nonzeros.under.null <- ifelse (proba.nb.nonzeros.under.null < 10^(-8), 0, proba.nb.nonzeros.under.null) ## just to avoid computational issues with small nbs
   
 #### now we have a probability to get each nb of non-zero chisquares and for each of these values, we can use the chi-squared function in R to compare to the observed stat
